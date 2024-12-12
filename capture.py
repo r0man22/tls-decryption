@@ -2,7 +2,7 @@ import pyshark
 import asyncio
 
 # Paket yakalamayı başlatıyoruz
-capture = pyshark.LiveCapture(interface='eth0', display_filter = 'tls.handshake.extensions_server_name or tls.handshake or http.request')
+c.apture = pyshark.LiveCapture(interface='eth0', display_filter = 'tls.handshake.extensions_server_name or tls.handshake or http.request')
 
 # Paket yakalama işlemini dosyaya yazma
 try:
