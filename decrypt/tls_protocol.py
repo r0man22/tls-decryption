@@ -1,13 +1,14 @@
+import pyshark
 
-pcap_file = 'example.pcap'
+pcap_file = 'tls.pcapng'
 
-capture = pyshark.FileCapture(pcap_file, display_filter='tls')
+capture = pyshark.FileCapture(pcap_file, display_filter='tls and info contains "application data"')
 
 for packet in capture:
 	print(f"Packet Number: {packet.number}")
 	print(f"Timestamp: {packet.sniff_time}")
 
-	if hasattr(packet, 'tls'):
+	if hasattr(packet, 'tls') and hasattr(packet.tls, 'record_version'):
 		if '1.2' in str(packet.tls.record_version):
 			protocol = 'TLSv1.2'
 		elif '1.3' in str(packet.tls.record_version):
