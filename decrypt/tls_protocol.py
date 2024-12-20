@@ -2,7 +2,7 @@ import pyshark
 
 pcap_file = 'tls.pcapng'
 
-capture = pyshark.FileCapture(pcap_file, display_filter='tls and info contains "application data"')
+capture = pyshark.FileCapture(pcap_file, display_filter="tls and frame matches 'Application Data'")
 
 for packet in capture:
 	print(f"Packet Number: {packet.number}")
